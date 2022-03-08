@@ -1,0 +1,6 @@
+#!/bin/sh
+
+qemu-system-x86_64 -m 1G \
+-nic bridge -boot d -cdrom alpine-virt-3.15.0-x86.iso \
+-hda alpine.qcow2 -display curses -nographic \
+-accel kvm -netdev user,id=mynet0,hostfwd=tcp::5007-:5007 -device e1000,netdev=mynet0
